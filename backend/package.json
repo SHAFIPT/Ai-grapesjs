@@ -3,9 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node index.ts",
-    "dev": "nodemon"
-  },
+  "start": "ts-node index.ts",
+  "dev": "nodemon",
+  "build": "echo 'No build step needed — using ts-node directly'"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
