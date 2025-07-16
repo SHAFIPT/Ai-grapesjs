@@ -1,10 +1,13 @@
-import { WebsiteGeneratorForm } from "@/app/WebsiteGeneratorForm";
-
+import { WebsiteGeneratorForm } from "./app/WebsiteGeneratorForm";
+import { Toaster } from "@/components/ui/toaster";
 function App() {
   return (
-    <main className="min-h-screen bg-background text-foreground">
-      <WebsiteGeneratorForm />
-    </main>
+    <>
+      <Toaster/>
+      <main className="min-h-screen bg-background text-foreground">
+        <WebsiteGeneratorForm />
+      </main>
+    </>
   );
 }
 

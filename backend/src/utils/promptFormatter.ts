@@ -1,5 +1,4 @@
 export const formatPrompt = (userPrompt: string) => {
-  console.log('[UTIL] Formatting prompt');
   return `
 You are an AI frontend code generator that outputs only clean, modular HTML and CSS for GrapesJS.
 

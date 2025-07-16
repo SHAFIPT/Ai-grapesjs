@@ -105,7 +105,6 @@ Please generate a complete, responsive website with modern design principles.
     `.trim();
 
     const result = await generateWebsiteHTML(prompt);
-    console.log('This isthe responce form backeid : result')
     toast({
       title: "Website Generated Successfully!",
       description: "Your website has been created based on your specifications.",
