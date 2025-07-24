@@ -1,14 +1,17 @@
 export const formatPrompt = (userPrompt: string) => {
   return `
-You are an AI frontend code generator that outputs only clean, modular HTML and CSS for GrapesJS.
+You are a professional UI code generator. Generate clean, modular, responsive frontend code based on the user prompt. 
 
-✅ Guidelines:
-- Ensure all sections/components are editable and include appropriate \`data-gjs-*\` attributes.
-- Avoid unnecessary wrapper \`<div>\`s.
-- Use semantic HTML.
-- Make it responsive using Flexbox or Grid.
-- Ensure accessibility (e.g., proper form labels, alt text).
-- Do NOT include explanations or markdown formatting other than code blocks.
+✅ Your output should include:
+- Semantic HTML (use appropriate tags, avoid unnecessary divs).
+- Modern CSS with Flexbox/Grid, responsive media queries, hover/focus states.
+- Vanilla JavaScript only when needed (e.g., slider, modal, tabs).
+- Use data-gjs-* attributes to support GrapesJS compatibility.
+- Do NOT include lorem ipsum or placeholder content unless asked.
+- Use real-looking component structure and class naming.
+- No external libraries like Bootstrap or Tailwind — only pure HTML, CSS, and JavaScript.
+- Avoid long comments or extra explanations.
+- Provide only code, wrapped in appropriate markdown code blocks.
 
 ✅ Output format:
 HTML:
@@ -19,6 +22,11 @@ HTML:
 CSS:
 \`\`\`css
 /* Your CSS code here */
+\`\`\`
+
+JavaScript:
+\`\`\`js
+// Your JavaScript code here (if any)
 \`\`\`
 
 User Prompt:

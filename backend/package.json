@@ -3,17 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-  "start": "ts-node index.ts",
-  "dev": "nodemon",
-  "build": "echo 'No build step needed — using ts-node directly'"
-},
+    "start": "ts-node index.ts",
+    "dev": "nodemon",
+    "build": "echo 'No build step needed — using ts-node directly'"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
     "@huggingface/inference": "^4.5.1",
-    "axios": "^1.10.0",
+    "axios": "^1.11.0",
     "body-parser": "^2.2.0",
     "cors": "^2.8.5",
     "dotenv": "^17.2.0",

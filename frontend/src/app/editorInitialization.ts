@@ -10,6 +10,7 @@ export const initializeEditor = async ({
   grapesEditor,
   html,
   css,
+  js,
   mapAIComponentsToGrapesJS,
   defineCustomComponents,
   defineEnhancedBlocks,
@@ -23,6 +24,7 @@ export const initializeEditor = async ({
   grapesEditor: RefObject<Editor | null>;
   html: string;
   css: string;
+  js: string;
   mapAIComponentsToGrapesJS: (htmlContent: string) => string;
   defineCustomComponents: (editor: Editor) => void;
   defineEnhancedBlocks: (editor: Editor) => void;
@@ -109,8 +111,16 @@ export const initializeEditor = async ({
       });
 
       try {
-        grapesEditor.current.setComponents(cleanHtml);
-        grapesEditor.current.setStyle(enhancedCss(css)); // Combine css prop with enhancedCss
+        const htmlWithJs = `
+          ${cleanHtml}
+          <script>
+            (() => {
+              ${js}
+            })();
+          </script>
+        `;
+        grapesEditor.current.setComponents(htmlWithJs);
+        grapesEditor.current.setStyle(enhancedCss(css)); 
         
         await new Promise(resolve => setTimeout(resolve, 100));
         

@@ -12,10 +12,11 @@ import { enhancedCss } from './styles';
 interface GrapesJSEditorProps {
   html: string;
   css: string;
+  js: string;
   onBack: () => void;
 }
 
-const GrapesJSEditor: React.FC<GrapesJSEditorProps> = ({ html, css, onBack }) => {
+const GrapesJSEditor: React.FC<GrapesJSEditorProps> = ({ html, css, js, onBack }) => {
   const editorRef = useRef<HTMLDivElement>(null);
   const blocksRef = useRef<HTMLDivElement>(null);
   const layersRef = useRef<HTMLDivElement>(null);
@@ -45,11 +46,12 @@ const GrapesJSEditor: React.FC<GrapesJSEditorProps> = ({ html, css, onBack }) =>
       stylesRef,
       grapesEditor,
       html,
-      css, // Pass the css prop directly
+      css,
+      js,
       mapAIComponentsToGrapesJS,
       defineCustomComponents,
       defineEnhancedBlocks,
-      enhancedCss, // Pass the enhancedCss function
+      enhancedCss,
       setEditorReady
     });
 
@@ -63,7 +65,7 @@ const GrapesJSEditor: React.FC<GrapesJSEditorProps> = ({ html, css, onBack }) =>
         grapesEditor.current = null;
       }
     };
-  }, [html, css]);
+  }, [html, css,js]);
 
   const handleExport = () => {
     const editor = grapesEditor.current;
@@ -229,7 +231,7 @@ const GrapesJSEditor: React.FC<GrapesJSEditorProps> = ({ html, css, onBack }) =>
 
   return (
     <div className="h-screen flex flex-col bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50 overflow-hidden">
-      <div className="relative bg-white/90 backdrop-blur-xl border-b border-white/20 shadow-lg">
+      <div className="relative bg-gray-600 backdrop-blur-xl border-b border-white/20 shadow-lg">
         <div className="absolute inset-0 bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10"></div>
         <div className="relative flex items-center justify-between p-4 lg:px-6">
           <div className="flex items-center space-x-4">
@@ -248,29 +250,29 @@ const GrapesJSEditor: React.FC<GrapesJSEditorProps> = ({ html, css, onBack }) =>
               </Button>
             </div>
             <div className="hidden sm:flex items-center space-x-2">
-              <Button variant="ghost" onClick={handleUndo}>
+              <Button variant="outline" onClick={handleUndo}>
                 <Undo className="w-4 h-4" />
               </Button>
-              <Button variant="ghost" onClick={handleRedo}>
+              <Button variant="outline" onClick={handleRedo}>
                 <Redo className="w-4 h-4" />
               </Button>
             </div>
           </div>
           <div className="flex items-center space-x-2">
-            <Button variant="ghost" onClick={() => setDevice('Desktop')}>
+            <Button className='bg-gray-700' onClick={() => setDevice('Desktop')}>
               Desktop
             </Button>
-            <Button variant="ghost" onClick={() => setDevice('Tablet')}>
+            <Button className='bg-gray-700' onClick={() => setDevice('Tablet')}>
               Tablet
             </Button>
-            <Button variant="ghost" onClick={() => setDevice('Mobile')}>
+            <Button className='bg-gray-700' onClick={() => setDevice('Mobile')}>
               Mobile
             </Button>
           </div>
         </div>
       </div>
       <div className="flex flex-1 overflow-hidden">
-        <div className="w-16 bg-white/80 backdrop-blur-lg border-r border-white/20 shadow-lg flex flex-col items-center py-4 space-y-4">
+        <div className="w-16 bg-gray-600 backdrop-blur-lg border-r border-white/20 shadow-lg flex flex-col items-center py-4 space-y-4">
           <Button variant="ghost" onClick={() => togglePanel('blocks')}>
             <Layers className="w-5 h-5" />
           </Button>
@@ -281,13 +283,13 @@ const GrapesJSEditor: React.FC<GrapesJSEditorProps> = ({ html, css, onBack }) =>
             <Palette className="w-5 h-5" />
           </Button>
         </div>
-        <div className="w-72 bg-white overflow-y-auto transition-all duration-300" style={{ display: activePanel === 'blocks' ? 'block' : 'none' }}>
+        <div className="w-72 bg-gray-700 overflow-y-auto transition-all duration-300" style={{ display: activePanel === 'blocks' ? 'block' : 'none' }}>
           <div ref={blocksRef} className="gjs-blocks-cs p-4"></div>
         </div>
-        <div className="w-72 bg-white overflow-y-auto transition-all duration-300" style={{ display: activePanel === 'layers' ? 'block' : 'none' }}>
+        <div className="w-72 bg-gray-700 overflow-y-auto transition-all duration-300" style={{ display: activePanel === 'layers' ? 'block' : 'none' }}>
           <div ref={layersRef} className="gjs-layers-cs p-4"></div>
         </div>
-        <div className="w-72 bg-white overflow-y-auto transition-all duration-300" style={{ display: activePanel === 'styles' ? 'block' : 'none' }}>
+        <div className="w-72 bg-gray-700 overflow-y-auto transition-all duration-300" style={{ display: activePanel === 'styles' ? 'block' : 'none' }}>
           <div ref={stylesRef} className="gjs-sm-sectors p-4"></div>
         </div>
         <div className="flex-1 overflow-hidden">
