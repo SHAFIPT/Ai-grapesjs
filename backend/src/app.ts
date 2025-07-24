@@ -12,7 +12,6 @@ app.use(
 
 app.use(express.json());
 
-console.log('[APP] Setting up /generate-site route');
 app.use('/generate-site', generateRoute);
  
 export default app;
